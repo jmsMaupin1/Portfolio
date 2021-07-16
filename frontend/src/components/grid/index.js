@@ -20,8 +20,9 @@ export const Cell = styled.div`
     border-radius: 2px;
     font-family: Helvetica;
     font-weight: bold;
-    font-size: 4em;
+    font-size: ${({fontSize}) => fontSize ? fontSize : "4em"};
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 `
