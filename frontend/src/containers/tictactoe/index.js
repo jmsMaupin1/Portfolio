@@ -1,42 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { Grid, Cell } from '../../components/grid';
+import React from 'react'
+import styled from 'styled-components';
+
+import TicTacToeBoard from '../../components/tttboard';
+
+const colorPallette = {
+    "Charcoal": "#34495E",
+    "Charcoal2": "#2C3E50",
+    "Platinum": "#EAEBED",
+    "Pewter Blue": "#A3BAC3",
+    "Pacific Blue": "#01A7C2"
+}
+const BG = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background: ${colorPallette["Pewter Blue"]};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+/*
+    For now lets keep this simple, no score tracking, and you dont get to
+    choose if youre playing x or o's youre playing x, thats it. You also must
+    go first. We will add more functionality as we go
+*/
 
 function Index() {
-    const [board, setBoard] = useState(Array(9).fill(''));
-    const [turn, setTurn] = useState(0);
+    const onCellClick = index => {
 
-    const onClick = index => {
-        const players = ["X", "O"];
-        let newBoard = [...board]
-
-        if (board[index] === '') {
-            newBoard[index] = players[turn];
-
-            setTurn((turn + 1) % 2);
-            setBoard(newBoard);
-        }
     }
 
     return (
-        <Grid
-            height={3}
-            width={3}
-            bgColor={"#34495e"}
-            borderColor={"#2c3e50"} 
-        >
-
-            {
-                board.map((cell, index) => (
-                    <Cell
-                        key={index}
-                        borderColor={"#2c3e50"}
-                        onClick={() => onClick(index)}               
-                    >
-                        {cell}
-                    </Cell>
-                ))
-            }
-        </Grid>  
+        <BG>
+            <div>
+                <TicTacToeBoard 
+                    board={Array(9).fill('')}
+                    onClick={onCellClick}
+                />
+            </div>
+        </BG>
     )
 }
 

@@ -1,10 +1,9 @@
-import TicTacToe from '../tictactoe';
+import TicTacToe from '../../components/tttboard';
 
 function App() {
 
   return (
     <div className="App">
-      <TicTacToe />
     </div>
   );
 }
